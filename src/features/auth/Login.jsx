@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 import { setCredentials } from "./authSlice"
 import { useLoginMutation } from "./authApiSlice"
 import usePersist from "../../hooks/usePersist"
-
+import { BiHome } from "react-icons/bi"
 import {
   Container,
   Box,
@@ -141,7 +141,9 @@ export default function Login() {
         }}
       >
         <Container maxWidth="md">
-          <Button onClick={() => navigate("/")}>Go home</Button>
+          <Button onClick={() => navigate("/")}>
+            <BiHome size="1.5rem" title="Go Home" />
+          </Button>
         </Container>
       </Box>
     </>

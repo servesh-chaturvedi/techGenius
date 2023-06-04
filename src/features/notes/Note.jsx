@@ -3,6 +3,7 @@ import { useGetNotesQuery } from "./notesApiSlice"
 import { memo } from "react"
 import { StyledTableRow, StyledTableCell } from "../../components/CustomTable"
 import { Button, Typography } from "@mui/material"
+import { FiEdit } from "react-icons/fi"
 
 const Note = ({ noteId }) => {
   const { note } = useGetNotesQuery("notesList", {
@@ -47,7 +48,9 @@ const Note = ({ noteId }) => {
       <StyledTableCell>{note.title}</StyledTableCell>
       <StyledTableCell>{note.username}</StyledTableCell>
       <StyledTableCell>
-        <Button onClick={handleEdit}>Edit</Button>
+        <Button onClick={handleEdit}>
+          <FiEdit size="1.1rem" />
+        </Button>
       </StyledTableCell>
     </StyledTableRow>
   )

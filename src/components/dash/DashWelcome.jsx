@@ -1,22 +1,21 @@
 import {
   Typography,
   Card,
-  CardMedia,
   CardContent,
   CardActionArea,
+  Box,
 } from "@mui/material"
 import { Link } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
 import useTitle from "../../hooks/useTitle"
 
-const ActionCard = () => {
+const ActionCard = ({ text, link }) => {
   return (
-    <Card sx={{ maxWidth: 150 }}>
-      <CardActionArea>
-        <CardMedia component="img" height="100" image="" />
+    <Card sx={{ maxWidth: 150 }} raised>
+      <CardActionArea component={Link} to={link}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Lizard
+          <Typography gutterBottom variant="body1" component="span">
+            {text}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -41,21 +40,25 @@ const DashWelcome = () => {
       <Typography variant="h5" component="h2" gutterBottom mt={2}>
         Welcome {username}!
       </Typography>
-      <Typography variant="body1">
-        <Link to="/dash/notes">View Notes</Link>
+      <Typography variant="h6" component="h3" gutterBottom mt={2}>
+        Note Settings
       </Typography>
-      <Typography variant="body1">
-        <Link to="/dash/notes/new">Add a Note</Link>
-      </Typography>
+
+      <Box display="flex" gap={1}>
+        <ActionCard text="View Notes" link="/dash/notes" />
+        <ActionCard text="Add a Note" link="/dash/notes/new" />
+      </Box>
+
       {(isManager || isAdmin) && (
-        <Typography variant="body1">
-          <Link to="/dash/users">View Users</Link>
-        </Typography>
-      )}
-      {(isManager || isAdmin) && (
-        <Typography variant="body1">
-          <Link to="/dash/users/new">Add a User</Link>
-        </Typography>
+        <>
+          <Typography variant="h6" component="h3" gutterBottom mt={2}>
+            User Settings
+          </Typography>
+          <Box display="flex" gap={1}>
+            <ActionCard text="View Users" link="/dash/users" />
+            <ActionCard text="Add a User" link="/dash/users/new" />
+          </Box>
+        </>
       )}
     </>
   )

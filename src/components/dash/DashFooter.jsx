@@ -4,6 +4,7 @@ import Container from "@mui/material/Container"
 import Link from "@mui/material/Link"
 import { useNavigate, useLocation } from "react-router-dom"
 import useAuth from "../../hooks/useAuth"
+import { BiHome } from "react-icons/bi"
 
 function Copyright() {
   return (
@@ -32,7 +33,11 @@ export default function DashFooter() {
 
   let goHomeButton = null
   if (pathname !== "/dash") {
-    goHomeButton = <Button onClick={onGoHomeClicked}> Go to Dash</Button>
+    goHomeButton = (
+      <Button onClick={onGoHomeClicked} title="Go to dash">
+        <BiHome size="1.5rem" />
+      </Button>
+    )
   }
 
   return (

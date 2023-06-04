@@ -3,6 +3,7 @@ import { useGetUsersQuery } from "./usersApiSlice"
 import { memo } from "react"
 import { StyledTableRow, StyledTableCell } from "../../components/CustomTable"
 import { Button } from "@mui/material"
+import { FiEdit } from "react-icons/fi"
 
 const User = ({ userId }) => {
   const { user } = useGetUsersQuery("usersList", {
@@ -22,7 +23,9 @@ const User = ({ userId }) => {
       <StyledTableCell>{user.username}</StyledTableCell>
       <StyledTableCell>{userRolesString}</StyledTableCell>
       <StyledTableCell>
-        <Button onClick={handleEdit}>Edit</Button>
+        <Button onClick={handleEdit}>
+          <FiEdit size="1.1rem" />
+        </Button>
       </StyledTableCell>
     </StyledTableRow>
   )
