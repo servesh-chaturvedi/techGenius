@@ -14,10 +14,7 @@ const NotFound = () => {
   return (
     <>
       <Container component="main" maxWidth="xs">
-        <img
-          src="/src/assets/Lost.webp"
-          alt="Two people and a magnifying glass"
-        />
+        <img src="/assets/Lost.webp" alt="Two people and a magnifying glass" />
         <Typography component="h1" variant="h4" gutterBottom>
           404 - Page not found
         </Typography>
