@@ -15,6 +15,7 @@ import EditNote from "./features/notes/EditNote"
 import RequireAuth from "./features/auth/RequireAuth"
 import { ROLES } from "./config/roles"
 import useTitle from "./hooks/useTitle"
+import NotFound from "./components/NotFound"
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
               </Route>
             </Route>
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>
