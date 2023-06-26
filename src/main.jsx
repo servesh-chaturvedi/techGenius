@@ -10,7 +10,6 @@ import { Provider } from "react-redux"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { disableReactDevTools } from "@fvilers/disable-react-devtools"
 
-console.log(process.env.NODE_ENV) //remove
 if (process.env.NODE_ENV === "production") disableReactDevTools()
 
 const darkTheme = createTheme({
