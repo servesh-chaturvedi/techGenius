@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { setCredentials } from "./authSlice"
 import { useLoginMutation } from "./authApiSlice"
 import usePersist from "../../hooks/usePersist"
+import useTitle from "../../hooks/useTitle"
 import { BiHome } from "react-icons/bi"
 import {
   Container,
@@ -17,6 +18,8 @@ import {
 } from "@mui/material/"
 
 export default function Login() {
+  useTitle("Employee Login")
+
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errMsg, setErrMsg] = useState("")
@@ -34,6 +37,15 @@ export default function Login() {
   const handleUserInput = (e) => setUsername(e.target.value)
   const handlePwdInput = (e) => setPassword(e.target.value)
   const handleToggle = () => setPersist((prev) => !prev)
+
+  const setManagerCreds = () => {
+    setUsername("MikeScott")
+    setPassword("Mike123")
+  }
+  const setEmpCreds = () => {
+    setUsername("JimHalpert")
+    setPassword("Jim123")
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -125,6 +137,22 @@ export default function Login() {
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
+            </Button>
+            <Button
+              fullWidth
+              variant="outlined"
+              sx={{ mt: 1 }}
+              onClick={setManagerCreds}
+            >
+              Set Manager credentials
+            </Button>
+            <Button
+              fullWidth
+              variant="outlined"
+              sx={{ mt: 1 }}
+              onClick={setEmpCreds}
+            >
+              Set Employee credentials
             </Button>
           </Box>
         </Box>
