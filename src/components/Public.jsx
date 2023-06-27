@@ -41,8 +41,8 @@ const Public = () => {
       <header className="primary-header">
         <div className="container">
           <nav>
-            <a href="#" className="logo" aria-label="Paperpal" title="Paperpal">
-              <img src="assets/logo.svg" alt="Paperpal logo" />
+            <a href="#" className="logo" aria-label="Paperpal">
+              <span>Paperpal</span>
             </a>
             <button
               className="mobile-nav-toggle"
@@ -90,8 +90,35 @@ const Public = () => {
         </div>
       </header>
       <main id="main">
-        <section className="container">
-          <h1>Welcome</h1>
+        <section className="container hero">
+          <h1>Where creativity meets quality</h1>
+          <p>
+            Introducing PaperPal, your one-stop-shop for wholesale office
+            papers, supplies, and everything in between.
+          </p>
+          <p>
+            We pride ourselves on our top-quality products and exceptional
+            customer service, striving to provide our clients with the best
+            office supply solutions available. From printer paper to office
+            organization tools, PaperPal is your go-to for all your office
+            needs.
+          </p>
+        </section>
+        <section className="stats">
+          <div className="container stats-wrapper">
+            <div className="card">
+              <span>10+</span>
+              <p>Years of experience</p>
+            </div>
+            <div className="card">
+              <span>50+</span>
+              <p>Product varieties</p>
+            </div>
+            <div className="card">
+              <span>500+</span>
+              <p>Happy customers</p>
+            </div>
+          </div>
         </section>
       </main>
     </>

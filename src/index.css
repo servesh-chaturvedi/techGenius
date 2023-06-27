@@ -78,10 +78,12 @@
 :where(p, h1, h2, h3, h4, h5, h6) {
   overflow-wrap: break-word;
   font-weight: 400;
+  max-width: 50ch;
 }
 
 :where(h1, h2, h3) {
   line-height: calc(1em + 0.5rem);
+  font-family: "Elsie", Cambria, serif;
 }
 
 :where(hr) {
@@ -137,7 +139,8 @@
 
 .logo {
   display: inline-block;
-  width: clamp(12rem, 10rem + 10vw, 18rem);
+  font: 1.6em "Elsie";
+  text-decoration: none;
   z-index: 999;
 }
 
@@ -244,4 +247,40 @@
 
 main {
   flex: 1;
+}
+
+.hero {
+  padding-block: 3rem 1.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.hero h1 {
+  font-size: 3rem;
+}
+
+.stats {
+  background: rgb(17, 17, 17);
+  background: linear-gradient(
+    180deg,
+    #121212 0%,
+    #222222 25%,
+    #333333 50%,
+    #222222 80%,
+    #121212 100%
+  );
+
+  padding-block: 2rem;
+}
+.stats-wrapper {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font: 1.2rem "Elsie", Cambria, serif;
+}
+
+.stats-wrapper span {
+  font-size: 2.5rem;
+  line-height: 1.5;
 }
