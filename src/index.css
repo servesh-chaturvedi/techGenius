@@ -1,6 +1,242 @@
-html,
-body {
-  height: 100%;
+/* RESETS */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:where([hidden]:not([hidden="until-found"])) {
+  display: none !important;
+}
+
+:where(html) {
+  -webkit-text-size-adjust: none;
+}
+
+@supports not (min-block-size: 100dvb) {
+  :where(html) {
+    block-size: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(html:focus-within) {
+    scroll-behavior: smooth;
+  }
+}
+
+:where(body) {
+  block-size: 100%;
+  block-size: 100dvb;
+  line-height: 1.5;
+  font-family: system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+:where(input, button, textarea, select) {
+  font: inherit;
+  color: inherit;
+}
+
+:where(textarea) {
+  resize: vertical;
+  resize: block;
+}
+
+:where(button, label, select, summary, [role="button"], [role="option"]) {
+  cursor: pointer;
+}
+
+:where(:disabled) {
+  cursor: not-allowed;
+}
+
+:where(label:has(> input:disabled), label:has(+ input:disabled)) {
+  cursor: not-allowed;
+}
+
+:where(a) {
+  text-underline-offset: 0.2ex;
+  color: inherit;
+}
+
+:where(ul, ol) {
+  list-style: none;
+}
+
+:where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: block;
+}
+
+:where(img, picture, svg) {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+:where(p, h1, h2, h3, h4, h5, h6) {
+  overflow-wrap: break-word;
+  font-weight: 400;
+  max-width: 50ch;
+}
+
+:where(h1, h2, h3) {
+  line-height: calc(1em + 0.5rem);
+  font-family: "Elsie", Cambria, serif;
+}
+
+:where(hr) {
+  border: none;
+  border-block-start: 1px solid;
+  color: inherit;
+  block-size: 0;
+  overflow: visible;
+}
+
+:where(:focus-visible) {
+  outline: 2px solid var(--focus-color, Highlight);
+  transition: outline-offset 75ms ease-out;
+}
+
+:where(:not(:active):focus-visible) {
+  outline-offset: 0.25rem;
+}
+
+:where(
+    .visually-hidden:not(:focus, :active, :focus-within, .not-visually-hidden)
+  ) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom CSS */
+
+.container {
+  padding-inline: clamp(1rem, 0.75rem + 1.25vw, 2.25rem);
+  margin-inline: auto;
+  max-width: 70rem;
+}
+
+.logo {
+  display: inline-block;
+  font: 1.6em "Elsie";
+  text-decoration: none;
+  z-index: 999;
+}
+
+.primary-header nav {
+  position: relative;
+  padding-block: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+.primary-nav {
+  display: flex;
+  gap: clamp(1rem, -1.5rem + 5vw, 3rem);
+}
+
+.primary-nav a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 300;
+  position: relative;
+}
+
+.primary-nav a:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: whitesmoke;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.2, 1),
+    -webkit-transform 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.primary-nav a:is(:hover, :focus):after {
+  transform: scaleX(1);
+  transition-duration: 0.5s;
+  transform-origin: left center;
+}
+
+.skip-to-content {
+  position: absolute;
+  z-index: 9999;
+  background: hsl(var(--clr-white));
+  color: hsl(var(--clr-dark));
+  padding: 0.5em 1em;
+  margin-inline: auto;
+  transform: translateY(-100%);
+  transition: transform 100ms ease-in-out;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
+@media (max-width: 50rem) {
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    top: 2rem;
+    background: transparent;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    border: 0;
+  }
+
+  .primary-header nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2em;
+  }
+
+  .primary-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    inset: 0 30vmin 0 0;
+    background-color: hsl(0, 0%, 20%, 0.9);
+    padding: 20vmax 4rem;
+    transform: translateX(-100%);
+    transition: transform 250ms ease;
+    backdrop-filter: blur(5px);
+  }
+
+  .primary-nav[data-visible="true"] {
+    transform: translateX(0);
+  }
 }
 
 #root {
@@ -11,4 +247,40 @@ body {
 
 main {
   flex: 1;
+}
+
+.hero {
+  padding-block: 3rem 1.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.hero h1 {
+  font-size: 3rem;
+}
+
+.stats {
+  background: rgb(17, 17, 17);
+  background: linear-gradient(
+    180deg,
+    #121212 0%,
+    #222222 25%,
+    #333333 50%,
+    #222222 80%,
+    #121212 100%
+  );
+
+  padding-block: 2rem;
+}
+.stats-wrapper {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font: 1.2rem "Elsie", Cambria, serif;
+}
+
+.stats-wrapper span {
+  font-size: 2.5rem;
+  line-height: 1.5;
 }

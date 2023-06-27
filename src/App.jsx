@@ -14,7 +14,6 @@ import NewNote from "./features/notes/NewNote"
 import EditNote from "./features/notes/EditNote"
 import RequireAuth from "./features/auth/RequireAuth"
 import { ROLES } from "./config/roles"
-import useTitle from "./hooks/useTitle"
 import NotFound from "./components/NotFound"
 
 function App() {
