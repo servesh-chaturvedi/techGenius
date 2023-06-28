@@ -16,7 +16,7 @@ function Copyright() {
     >
       {"Copyright © "}
       <Link color="inherit" href="/">
-        Your Website
+        PaperPal
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
