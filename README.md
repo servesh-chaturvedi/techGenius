@@ -31,4 +31,9 @@ __Note:__ Due to free tier restrictions on the custom backend, it is best to vis
 - Require users to login at least once every five days
 - Responsive design for best experience on most devices. 
 
+## Demo
+
+
+
+https://github.com/servesh-chaturvedi/techGenius/assets/72094888/986b2e8f-9c42-4100-9a61-923e13011099
 
