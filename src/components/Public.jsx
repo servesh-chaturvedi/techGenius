@@ -70,14 +70,8 @@ const Public = () => {
                 </a>
               </li>
               <li>
-                <a className="" href="#">
-                  Services
-                </a>
-              </li>
-
-              <li>
-                <a className="" href="#">
-                  About
+                <a className="" href="https://github.com/servesh-chaturvedi/techGenius" target="_blank">
+                  Github
                 </a>
               </li>
               <li>
