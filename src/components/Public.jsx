@@ -41,9 +41,9 @@ const Public = () => {
       <header className="primary-header">
         <div className="container">
           <nav>
-            <a href="#" className="logo" aria-label="Paperpal">
+            <Link to="/" className="logo" aria-label="Paperpal">
               <span>Paperpal</span>
-            </a>
+            </Link>
             <button
               className="mobile-nav-toggle"
               aria-controls="primary-navigation"
@@ -53,7 +53,7 @@ const Public = () => {
             >
               <span className="visually-hidden">Menu</span>
               <img
-                src={isOpen ? "assets/x.svg" : "assets/menu.svg"}
+                src={isOpen ? "/assets/x.svg" : "/assets/menu.svg"}
                 alt=""
                 ref={iconRef}
               />
@@ -65,12 +65,16 @@ const Public = () => {
               className="primary-nav"
             >
               <li>
-                <a className="" href="#">
+                <Link className="" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="" href="https://github.com/servesh-chaturvedi/techGenius" target="_blank">
+                <a
+                  className=""
+                  href="https://github.com/servesh-chaturvedi/techGenius"
+                  target="_blank"
+                >
                   Github
                 </a>
               </li>
